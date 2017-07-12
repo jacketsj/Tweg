@@ -1,0 +1,92 @@
+\documentclass[letterpaper, reqno, 11pt]{article}
+\usepackage[margin=1.0in]{geometry}
+\usepackage{color,latexsym,amsmath,amssymb}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\newcommand{\ttitle}{Tweg 2}
+\newcommand{\tname}{\texttt{d7840470bd7331d07cb1ceef5eb7aa3c}}
+\lhead{\ttitle}
+\rhead{\tname}
+\cfoot{\thepage}
+
+\begin{document}
+
+\title{\ttitle}
+\author{\tname}
+
+\maketitle
+
+\textit{Tweg} is a playing card game meant to be played between two or more people (although game time may scale drastically). This document explains the rules for \textit{Tweg v2 (WIP)}.
+
+\section*{Materials}
+It requires very little to play. You will need:
+\begin{itemize}
+\item A standard 52-card deck for every four people playing ($\#\text{decks}=\left\lceil\frac{\#players}{4}\right\rceil)$
+\item Knowledge of basic arithmatic
+\item Time
+\item Patience
+\end{itemize}
+
+\section*{Rounds}
+\indent Any \textit{game} of Tweg is divided into \textit{rounds}, and the first player to reach two rounds won is declared the winner of the game as a whole. It is important to note that unlike many other games, individual rounds are far from independent of one another. Winning any given round does not necessarily signify an advantage in the overall game.\\
+\indent Unless otherwise specified, all played cards are placed in the \textit{discard pile} at the end of every round, with the exception of \textit{combinational spells} and their corresponding \textit{sacrifices}, but everyone keeps their current hand. The winner of the round draws one card before everyone moves on to the next.
+
+\section*{Hands}
+\indent At the start of a game, every player is dealt exactly ten cards for their hand, which is kept hidden. At this point, and at no other point, they may select up to two cards to redraw. They may place these cards face-up in their \textit{discard pile}, and redraw the number which they discarded. After this point, cards will be drawn very sparingly, in specific situations.
+
+\section*{Turns}
+\indent The first player to play their turn to start the game will be chosen by whomever, upon their first attempt, be able to produce the loudest snap using their preferred hand. From there, turns will be taken by players sitting in a counter-clockwise orientation. For any round after the first, the first player to take their turn will be whomever sits on the right-hand side of the previous round's winner.\\
+\indent On their turn, a player may either play a card, or pass. If they do not have the most \textit{power} at the time of passing (their power is more than or equal to that of every other player), then they are disqualified from (and consequently lose) the current round. If they do have the most power, then they will stay in the round for the time-being.
+
+\section*{Cards}
+Tweg distinguishes three primary types of cards:
+\begin{itemize}
+\item \textbf{Monsters}: Any of the cards with the numbers 2-10. On their own, the only worth these cards have is determined by their number and their suit.
+\item \textbf{Weather}: This consists of negative weather (king) and positive weather (ace). Weather cards are played \textit{in tandem} with a monster card of any suit to denote their power. So long as they are in play, every monster on the field with a suit matching the weather card will have their power reduced or increased (depending on the weather type) by the floored half of the number on the monster card. It is important to note that monsters can only have non-negative power, so for example a default power-2 monster in power-5 negative weather will have power-0. It is also important to note that weather will sum (this is helpful for total calculations), so for any given suit, one can consider the weather to be the sum of all the weather of that suit (where all powers are signed).
+\item \textbf{Spells}: Spell cards (the Queen and the Ace) do nothing on their own, but will have certain affects when exactly three monster cards have been placed upon them as sacrifices (so they do not act as monsters on their own, merely part of the spell), which are all placed on separate turns. The two different cards are different in that Queen-spells require monsters in a specific permutation, and Ace-spells require monsters in a specific combination.
+\end{itemize}
+
+\section*{Power}
+\indent The total power of a player is the sum of the power of all their played monsters, accounting for weather and other effects. This is what is used to determine who is currently winning any given round.\\
+\indent For anything with a specific power n (e.g. players, monsters, some spells), that thing is said to be power-n (e.g. a monster with a power of 5 is said to be power-5).
+
+\section*{Organization}
+\indent Individual monsters should be placed next to each other, oriented vertically. \textit{Fusions} should be placed on top of each other.\\
+Weather cards should be placed horizontally behind the monster cards (further away from the player). Weather cards of the same suit can be placed on top of each other so that the number is showing.\\
+Spell cards should be placed Vertically on the right of the monster cards so that there is a visible space between the two, and sacrifices should be placed on top of the card below so that the top of the card shows the number (this is the \textit{order of cast} for permutative spells).\\
+\indent The discard pile should be placed above the weather. Note: Any player is allowed to look through any other player's discard pile during their turn.
+
+\section*{Fusions}
+\indent Certain combinations of monsters can have special effects when played on top of each other. Once a monster is placed on the field, it cannot be moved to a different fusion. Unlike spells, fused monsters maintain their standard effects in addition to special effects, so unfinished fusions are not wasteful. Fusions are all permutational, although for some fusions, the order may not actually matter. They are said to be permutational because the order of the fusion \textit{might} matter. Since fusions do not require any specific number of cards universally, one fusion may turn into another. Only the ability of the complete fusion is used at any given time.
+\begin{itemize}
+\item Squares: Requires three monsters of power-2 with different suits are placed on top of each other. The most powerful monster on the field for the player for each of the two other suits will have their power squared for as long as the fusion is in place.
+\item Minimal Addition: Requires two monsters of incrementing value placed on top of each other. Upon fusion, take one card from your any of your opponents hands without looking at them. You may not take from an opponent with two or fewer remaining cards.
+\item Mini Plucker: Requires three monsters of incrementing value placed on top of each other. Upon fusion, take up to two cards from any of your opponents' hands without looking at them (both must come from the same opponent). You may not take from an opponent with three or fewer remaining cards.
+\item Royal Mini Plucker: Requires three monsters of incrementing value placed on top of each other all with the same suit. Upon fusion, take up to three cards from any of your opponents' hands without  looking at them (all three must come from the same opponent). You \textit{may} take from an opponent with any number of cards.
+\end{itemize}
+
+\section*{Spells}
+\indent Spells are cast with a combination of three monster sacrifices on separate turns. As mentioned earlier, Spells are separated into \textit{Permutational Spells} (Queen) and \textit{Combinational Spells} (Ace).\\
+Upon completing a spell, unless otherwise noted, a player is permitted to draw exactly one card (referred to as the \textit{cast draw}), although many spells will also allow for you to draw more cards in addition. Spells may rely on the suits and powers of monsters, as well as their own suit.
+\indent For the Permutational Spells, the \textit{order of cast} matters, and for Combinational Spells, it does not. In addition, Permutational Spells tend to have immediate or temporary effects, while Combinational Spells will have lasting effects.\\
+Some combinations or permutations may be valid for more than one spell, so upon completion of sacrifices, a player must declare which spell they will use.\\
+\indent Note: Decrementing value means the cards are placed in an order such that each power is less than that of the previous card. Incrementing value means that the cards are placed in an order such that each power is greater than that of the previous. Non-strictly denotes that a card may also be equal to the previous in power. Immediately denotes that the power must be exactly one away from that of the previous.\\
+Permutational Spells:
+\begin{itemize}
+\item Fibonacci: Requires monsters with the first three legal fibonacci numbers (2, 3, 5). Swap any of your monsters in play for a played monster belonging to the player to your right that does not have the greatest strength before counting weather of all that player's monsters currently in play.
+\item Regeneration: Requires any three cards of non-decreasing value that do not sum to be greater than at least one monster from \textit{any} player's discard pile. That monster (or any of greater value from any discard pile) may be played for the player who used regeneration in the current round.
+\item Evens: Three differently numbered even-powered monsters are sacrified in either non-strictly incrementing or decrementing value. Draw two cards in addition to cast draw.
+\item Disqualification: Requires three monsters who's powers add to ten or greater, where the order of the monsters is either sequential or reversed. Remove any two monsters from play across the field (they do \textit{not} have to be from the same player), and place them in your own discard pile.
+\item Cutoff: Requires three monsters of non-strictly decrementing value, all of which must have a value of six or greater. Choose one opponent. That opponent may not place any monster cards for two turns.
+\end{itemize}
+Combinational Spells:
+\begin{itemize}
+\item Fake Cards: Requires a one of circles, two and a half of squares, and $3+2i$ of triangles. Automatically causes the caster to win life.
+\item Hurricane: Requires one numerical pair of monsters, and a monster with a value no more than 1 away from the pair. Acts as a negative weather of power-13 for the suit of the spell card.
+\item Condenser: Requires three monsters of power-4 or lower. Choose one opponent. If that opponent has more than six monsters in play, incrementally remove their monsters and place them in their discard pile until they only have six monsters in play.
+\item Sight: Requires three cards of the same power. Choose one opponent. That opponent must reveal their hand to everyone.
+\item Swap: Requires three cards of immediately incrementing value, all of which must have the same suit, and all of which must have a power greater than or equal to five. Permanently swap hands with an opponent of your choice. Draw your cast draw before swapping.
+\end{itemize}
+
+
+\end{document}
